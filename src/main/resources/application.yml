@@ -1,0 +1,51 @@
+#server:
+#  port: 443 #SSL ??? ?? ??
+#  ssl:
+#    enabled: true
+#    certificate: classpath:ssl/www_threedayz.com_cert.crt.pem
+#    certificate-private-key: classpath:ssl/www_threedayz.com.key.pem
+
+security:
+  require-ssl: true
+
+spring:
+  servlet:
+    encoding:
+      charset: UTF-8
+      force: true
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+  thymeleaf:
+    prefix: classpath:web/
+    suffix: .html
+    cache: true # ????, TODO: ????? true ? ??? ?.
+    check-template-location: true # templates ???? ??(?? ??? ?? ??)
+  mvc:
+    static-path-pattern: /static/**
+    throw-exception-if-no-handler-found: true
+  web:
+    resources:
+      add-mappings: false
+
+  datasource:
+    url: jdbc:sqlserver://ms1902.gabiadb.com;DatabaseName=threedays;encrypt=true;trustServerCertificate=true
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    username: threedays
+    password: three05days16
+  output:
+    ansi:
+      enabled: always
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+
+mybatis:
+  mapper-locations:
+    - classpath:mapper/**.xml
+
+kakao:
+  api:
+    key: g66aimo9fdleo9bhuz8nbkszwcuc46z7
